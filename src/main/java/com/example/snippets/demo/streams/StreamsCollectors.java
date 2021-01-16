@@ -1,6 +1,6 @@
 package com.example.snippets.demo.streams;
 
-import com.demo.dto.Dish;
+import com.example.snippets.demo.dto.Dish;
 
 import java.util.*;
 import java.util.stream.Collectors;
