@@ -3,7 +3,9 @@ package com.example.snippets.demo.streams;
 import com.example.snippets.demo.dto.Dish;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static java.util.Arrays.asList;
 import static java.util.Comparator.comparingInt;
@@ -29,6 +31,7 @@ public class StreamsCollectors {
 
         groupingOptions(specialMenu);
 
+        creatingCollections();
 
     }
 
@@ -125,6 +128,36 @@ public class StreamsCollectors {
         System.out.println("DISH TYPES AND CALORIC LEVELS " + caloricLevelMap);
 
         System.out.println("AVAILABLE PROCESSORS " + Runtime.getRuntime().availableProcessors());
+    }
+
+    private static void creatingCollections() {
+        Set<String> friends = new HashSet<>(Arrays.asList("Cristian", "David", "Sanchez"));
+        Set<String> friends2 = Stream.of("Cristian", "David", "Sanchez").collect(toSet());
+
+        List<String> friends3 = List.of("Cristian", "David", "Sanchez");
+
+        List<String> cities = new ArrayList<>();
+        cities.add("Bogota");
+        cities.add("Medellin");
+        cities.add("Barranquilla");
+
+        cities.replaceAll(a -> a.startsWith("B") ? "REP" : a);
+        cities.forEach(System.out::println);
+
+        ConcurrentHashMap<Integer, String> numbers = new ConcurrentHashMap<>();
+        numbers.put(1, "One");
+        numbers.put(2, "Two");
+        numbers.put(3, "Three");
+        numbers.computeIfPresent(2, (k, v) -> v.toUpperCase());
+        numbers.compute(2, (k, v) -> "SECOND");
+
+        numbers.computeIfAbsent(4, (k) -> "FIRST " + k);
+
+        //numbers.remove(1, "One");
+
+        numbers.replace(1, "One", "FIRST");
+
+        numbers.forEach((k, v) -> System.out.println(k + ":" + v));
     }
 
     private static CaloricLevel getCaloricLevel(Dish dish) {

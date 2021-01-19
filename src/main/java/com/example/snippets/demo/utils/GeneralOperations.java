@@ -61,18 +61,30 @@ public class GeneralOperations {
 
     }
 
+    public static void main(String[] args) {
+        String wordsToCount = "Cristian";
+        Map<String, Integer> wordCount = getStringIntegerMap(wordsToCount);
+        wordCount.forEach((k, v) -> System.out.println(k + ":" + v));
+    }
+
     public static Map<String, Integer> getStringIntegerMap(String s) {
         String[] base = s.split("");
         Arrays.sort(base);
 
         Map<String, Integer> values = new HashMap<>();
-        for (String word : base) {
-            if (values.containsKey(word)) {
-                Integer amount = values.get(word) + 1;
-                values.put(word, amount);
+        for (String letter : base) {
+            values.computeIfPresent(letter, (k, v) -> ++v);
+            //values.computeIfAbsent(letter, k -> k.length());//BETTER IF THE VALUE REQUIRES THE KEY TO BE CALCULATED
+            values.putIfAbsent(letter, 1);//BETTER IF IT'S A FIXED VALUE
+
+            /* THIS CODE WAS IMPROVED BY THE ABOVE CODE
+
+            if (values.containsKey(letter)) {
+                Integer amount = values.get(letter) + 1;
+                values.put(letter, amount);
             } else {
-                values.put(word, 1);
-            }
+                values.put(letter, 1);
+            }*/
         }
         return values;
     }

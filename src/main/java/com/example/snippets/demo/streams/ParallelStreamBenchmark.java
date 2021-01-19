@@ -1,24 +1,27 @@
 package com.example.snippets.demo.streams;
 
 import org.openjdk.jmh.annotations.*;
+import org.openjdk.jmh.results.BenchmarkResult;
+import org.openjdk.jmh.results.BenchmarkTaskResult;
 
 import java.util.concurrent.TimeUnit;
+import java.util.stream.LongStream;
 import java.util.stream.Stream;
 
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.MILLISECONDS)
-@Fork(value = 2, jvmArgs = {"-Xms4G","-Xmx4G"})
+@Fork(value = 2, jvmArgs = {"-Xms4G", "-Xmx4G"})
 public class ParallelStreamBenchmark {
 
     private static final long N = 10_000_000L;
 
-//    @Benchmark
+    //    @Benchmark
     public long sequentialSum() {
         return Stream.iterate(1L, i -> i + 1).limit(N)
                 .reduce(0L, Long::sum);
     }
 
-//    @Benchmark
+    //    @Benchmark
     public long iterativeSum() {
         long result = 0;
         for (long i = 1L; i <= N; i++) {
@@ -27,10 +30,16 @@ public class ParallelStreamBenchmark {
         return result;
     }
 
-    @Benchmark
+    //    @Benchmark
     public long parallelSum() {
         return Stream.iterate(1L, i -> i + 1)
                 .limit(N)
+                .parallel()
+                .reduce(0L, Long::sum);
+    }
+
+    public long rageSummed() {
+        return LongStream.rangeClosed(1, N)
                 .parallel()
                 .reduce(0L, Long::sum);
     }
