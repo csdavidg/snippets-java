@@ -31,7 +31,7 @@ public class StreamsCollectors {
 
         groupingOptions(specialMenu);
 
-        creatingCollections();
+        //creatingCollections();
 
     }
 
