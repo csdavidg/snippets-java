@@ -17,4 +17,9 @@ public class Person {
     public void setCar(Optional<Car> car) {
         this.car = car;
     }
+
+    public static void main(String[] args) {
+        new Person(Optional.empty());
+        System.out.println("OK");
+    }
 }
