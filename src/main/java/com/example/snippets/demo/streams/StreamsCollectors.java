@@ -9,6 +9,7 @@ import java.util.stream.Stream;
 
 import static java.util.Arrays.asList;
 import static java.util.Comparator.comparingInt;
+import static java.util.Map.entry;
 import static java.util.stream.Collectors.*;
 
 public class StreamsCollectors {
@@ -25,14 +26,23 @@ public class StreamsCollectors {
                 new Dish("salmon", true, 530, Dish.Type.OTHER));
 
 
-        optionsToGetMaxValue(specialMenu);
+        //optionsToGetMaxValue(specialMenu);
 
-        sumAverageAndSummarizingNumbers(specialMenu);
+        //sumAverageAndSummarizingNumbers(specialMenu);
 
-        groupingOptions(specialMenu);
+        //groupingOptions(specialMenu);
 
         //creatingCollections();
 
+        Map<String, String> family = Map.ofEntries(
+                entry("Teo", "Star Wars"), entry("Cristina", "James Bond"));
+        Map<String, String> friends = Map.ofEntries(
+                entry("Raphael", "Star Wars"), entry("Cristina", "Matrix"));
+
+        Map<String, String> everyone = new HashMap<>(family);
+        friends.forEach((k, v) ->
+                everyone.merge(k, v, (movie1, movie2) -> movie1 + " & " + movie2));
+        System.out.println(everyone);
     }
 
     private static void groupingOptions(List<Dish> specialMenu) {

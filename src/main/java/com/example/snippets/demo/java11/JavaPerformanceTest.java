@@ -1,5 +1,6 @@
 package com.example.snippets.demo.java11;
 
+import java.util.HashMap;
 import java.util.stream.Stream;
 
 public class JavaPerformanceTest {
@@ -15,7 +16,29 @@ public class JavaPerformanceTest {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        HashMap<String, Integer> dummyObject = new HashMap<>();
         System.out.println(s);
+    }
+
+}
+
+interface Hello {
+    void say();
+}
+
+class Tester {
+
+    public static void main(String[] args) {
+        Hello test = Tester::saySomething;
+        test.say();
+    }
+
+    private static void saySomething() {
+        System.out.println("Say Something");
+    }
+
+    private static void say() {
+        System.out.println("Wathever");
     }
 
 }
