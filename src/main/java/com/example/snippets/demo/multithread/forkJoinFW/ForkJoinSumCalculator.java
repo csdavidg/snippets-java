@@ -49,7 +49,7 @@ public class ForkJoinSumCalculator extends RecursiveTask<Long> {
     }
 
     public static void main(String[] args) {
-
+        System.out.println(forkJoinSum(100));
     }
 
     public static long forkJoinSum(long n) {
