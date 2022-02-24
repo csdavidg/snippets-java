@@ -18,6 +18,7 @@ public class MinimumCommonNumberInArrays {
         Integer[] arr2 = {2, 3, 5, 6};
         Integer[] arr3 = {1, 2, 3, 4};
 
+        Stream.of(Stream.of(arr1).collect(groupingBy(a -> a.getClass().getSimpleName())));
         Map<Integer, Long> collect = Stream.of(Stream.of(arr1).collect(toSet()),
                 Stream.of(arr2).collect(toSet()),
                 Stream.of(arr3).collect(toSet()))

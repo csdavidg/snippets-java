@@ -58,6 +58,8 @@ public class OptionalDemo {
             personsList.add(person1);
         });
 
+
+
         Set<String> collect = personsList.stream()
                 .map(Person::getCar)
                 .map(c -> c.flatMap(Car::getInsurance))

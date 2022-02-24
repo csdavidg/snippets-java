@@ -43,6 +43,7 @@ public class GeneralOperations {
 
     public static Set<Character> stringToSetCharacter(String word) {
 
+        Stream<String> stream = Arrays.stream("SOME WORD".split(""));
         return Stream.of(word)
                 .flatMap(a -> Arrays.stream(a.split("")))
                 .map(a -> a.charAt(0))
@@ -89,4 +90,9 @@ public class GeneralOperations {
         return values;
     }
 
+    public static Set<Integer> intArrayToSet(int[] array) {
+        return Arrays.stream(array)
+                .boxed()
+                .collect(Collectors.toSet());
+    }
 }

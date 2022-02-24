@@ -31,7 +31,7 @@ public class LabelsTests {
 
         Set<String> s = Set.of("mickey", "minnie");
         List<String> x = new ArrayList<>(s);
-
+        x.stream();
         s.forEach(ss -> System.out.println(ss));
         x.forEach(xx -> System.out.println(xx));
 
