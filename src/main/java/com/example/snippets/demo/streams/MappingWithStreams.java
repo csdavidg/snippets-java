@@ -3,13 +3,22 @@ package com.example.snippets.demo.streams;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class MappingWithStreams {
 
     public static void main(String[] args) {
-        /*List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12);
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12);
 
-        List<Integer> powList = new ArrayList<>();
+        numbers.stream()
+                .filter(n -> n%2 == 0)
+                .filter(n -> n<10)
+                .forEach(System.out::println);
+        System.out.println("@@@@@@@@@@@@@");
+        numbers.stream().limit(10).skip(2).forEach(System.out::println);
+        System.out.println("@@@@@@@@@@@@@");
+
+        /*List<Integer> powList = new ArrayList<>();
         numbers.forEach(n -> powList.add((int) Math.pow(n, 2)));
         powList.forEach(System.out::println);
 

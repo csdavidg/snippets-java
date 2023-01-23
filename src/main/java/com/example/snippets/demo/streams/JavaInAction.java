@@ -5,6 +5,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class JavaInAction {
 
@@ -23,6 +24,15 @@ public class JavaInAction {
                 new Transaction(alan, 2012, 950),
                 null
         );
+
+        List<Transaction> transactions2 = Arrays.asList(
+                new Transaction(brian, 2011, 300),
+                new Transaction(raoul, 2012, 1000),
+                new Transaction(raoul, 2011, 400)
+        );
+
+        Stream.concat(transactions.stream(),transactions2.stream())
+                        .forEach(System.out::println);
 
         System.out.println("CITIES");
         transactions.stream()
