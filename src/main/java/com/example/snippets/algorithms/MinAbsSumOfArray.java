@@ -9,7 +9,7 @@ public class MinAbsSumOfArray {
         Arrays.sort(ints);
         int minAbs = Math.abs(ints[0] + ints[0]);
         for (int i = 0; i < ints.length; i++) {
-            if(ints[i] >= minAbs){
+            if (ints[i] >= minAbs) {
                 break;
             }
             for (int j = i; j < ints.length; j++) {
