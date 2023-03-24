@@ -154,10 +154,6 @@ public class MaximumPalindrome {
             sb.append(integerStack.pop());
         }
 
-        /*sortedMap.forEach((key, value) -> {
-
-        });*/
-
         return sb.toString();
 
     }
