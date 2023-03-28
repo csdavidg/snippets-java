@@ -1,4 +1,4 @@
-package com.example.snippets;
+package com.example.snippets.algorithms;
 
 public class SearchValueInArray {
 
